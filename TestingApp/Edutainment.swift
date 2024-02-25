@@ -71,8 +71,15 @@ struct SettingView: View {
     
     var body: some View {
         VStack {
-            Stepper("Multiply by \(selectedMultiplyBy)", value: $selectedMultiplyBy)
-                .padding()
+            Stepper("Multiply by \(selectedMultiplyBy)", value: $selectedMultiplyBy, in: 2...12)
+                .padding(.horizontal)
+            
+            Stepper("Number of questions \(selectedQuestionCount)", value: $selectedQuestionCount,in: 5...20, step: 5)
+                .padding(.horizontal)
+            
+            Button("Start Game") {
+                startGame()
+            }
         }
     }
 }
