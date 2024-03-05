@@ -14,6 +14,7 @@
 		A40A0C862B89BA1400E00342 /* Edutainment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A0C852B89BA1400E00342 /* Edutainment.swift */; };
 		A4CCC3492B92DBAC002F1AEA /* Guess-The-Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CCC3482B92DBAC002F1AEA /* Guess-The-Flag.swift */; };
 		A4E0845B2B96487B0090892B /* WeSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0845A2B96487B0090892B /* WeSplit.swift */; };
+		A4F8FEED2B979B7D00070C31 /* MultiplactionTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F8FEEC2B979B7D00070C31 /* MultiplactionTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		A40A0C852B89BA1400E00342 /* Edutainment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edutainment.swift; sourceTree = "<group>"; };
 		A4CCC3482B92DBAC002F1AEA /* Guess-The-Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guess-The-Flag.swift"; sourceTree = "<group>"; };
 		A4E0845A2B96487B0090892B /* WeSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeSplit.swift; sourceTree = "<group>"; };
+		A4F8FEEC2B979B7D00070C31 /* MultiplactionTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplactionTable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				A40A0C772B89B44100E00342 /* TestingAppApp.swift */,
 				A40A0C792B89B44100E00342 /* ContentView.swift */,
 				A40A0C852B89BA1400E00342 /* Edutainment.swift */,
+				A4F8FEEC2B979B7D00070C31 /* MultiplactionTable.swift */,
 				A4CCC3482B92DBAC002F1AEA /* Guess-The-Flag.swift */,
 				A4E0845A2B96487B0090892B /* WeSplit.swift */,
 				A40A0C7B2B89B44700E00342 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4F8FEED2B979B7D00070C31 /* MultiplactionTable.swift in Sources */,
 				A40A0C7A2B89B44100E00342 /* ContentView.swift in Sources */,
 				A40A0C782B89B44100E00342 /* TestingAppApp.swift in Sources */,
 				A4E0845B2B96487B0090892B /* WeSplit.swift in Sources */,
