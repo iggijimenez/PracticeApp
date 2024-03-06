@@ -24,18 +24,19 @@ struct MultiplactionTable: View {
         NavigationStack {
             VStack {
                 if ThisGameActive {
-                    ThisGameView(onSubmit: checkAnswer, userAnswer: $userAnswer, questions: questions[questionIndex])
+                    ThisGameView(onSubmit: checkAnswer, userAnswer: $userAnswer, questions: questions[questionIndex], indexOfQuestion: questionIndex)
                 } else {
                     SettingsView(startthisGame: startthisGame, questionsAsked: $questionAskeds, mulitplyBy: $multiplyBy)
                 }
             }
+            .navigationTitle("Multiplication Table")
         }
     }
     
     func generateQuestionsA() {
         questions = (1...questionAskeds).map({ _ in
             let multip = Int.random(in: 1...12)
-            let questText = "\(questionAskeds) x \(multip) = ?"
+            let questText = "\(multiplyBy) x \(multip) = ?"
             return QuestionsA(text: questText, answer: (multip * multiplyBy))
         })
     }
@@ -83,14 +84,19 @@ struct ThisGameView: View {
     let onSubmit: () -> Void
     @Binding var userAnswer: String
     var questions: QuestionsA
+    var indexOfQuestion: Int
     
     var body: some View {
         NavigationStack {
+            Text("Answer is \(questions.answer)")
+            Text("the index is \(indexOfQuestion + 1)")
+            
             Text(questions.text)
                 .font(.largeTitle)
             
             TextField("Answer", text: $userAnswer)
                 .padding(.horizontal, 20)
+                .keyboardType(.decimalPad)
             
             Button("Next") {
                 onSubmit()
