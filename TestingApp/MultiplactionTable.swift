@@ -18,12 +18,13 @@ struct MultiplactionTable: View {
     @State private var questionIndex = 0
     @State private var multiplyBy = 2
     @State private var questionAskeds = 5
+    @State private var userAnswer = ""
     
     var body: some View {
         NavigationStack {
             VStack {
                 if ThisGameActive {
-                    ThisGameView(questions: questions[questionIndex])
+                    ThisGameView(onSubmit: checkAnswer, userAnswer: $userAnswer, questions: questions[questionIndex])
                 } else {
                     SettingsView(startthisGame: startthisGame, questionsAsked: $questionAskeds, mulitplyBy: $multiplyBy)
                 }
@@ -31,9 +32,29 @@ struct MultiplactionTable: View {
         }
     }
     
+    func generateQuestionsA() {
+        questions = (1...questionAskeds).map({ _ in
+            let multip = Int.random(in: 1...12)
+            let questText = "\(questionAskeds) x \(multip) = ?"
+            return QuestionsA(text: questText, answer: (multip * multiplyBy))
+        })
+    }
+    
     func startthisGame() {
         ThisGameActive = true
+        generateQuestionsA()
     }
+    
+    func checkAnswer() {
+        if questionIndex < questionAskeds - 1  {
+            questionIndex +=  1
+        } else {
+            ThisGameActive = false
+            questionIndex = 0
+        }
+        
+    }
+    
     
 }
 
@@ -59,11 +80,21 @@ struct SettingsView: View {
 }
 
 struct ThisGameView: View {
+    let onSubmit: () -> Void
+    @Binding var userAnswer: String
     var questions: QuestionsA
     
     var body: some View {
         NavigationStack {
             Text(questions.text)
+                .font(.largeTitle)
+            
+            TextField("Answer", text: $userAnswer)
+                .padding(.horizontal, 20)
+            
+            Button("Next") {
+                onSubmit()
+            }
         }
     }
 }
