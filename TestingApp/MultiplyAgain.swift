@@ -20,12 +20,13 @@ struct MultiplyAgain: View {
     @State private var questions: [Question] = []
     @State private var userAnswer = ""
     @State private var currentIndex = 0
+    @State private var userScore = 0
     
     
     var body: some View {
         NavigationStack {
             if isGameActive {
-                GameView(question: questions[currentIndex], onSubmit: checkAnswer, userAnswer: $userAnswer)
+                GameView(question: questions[currentIndex], onSubmit: checkAnswer, userScore: userScore, userRound: currentIndex, numOfROunds: numOfQuestion, userAnswer: $userAnswer)
             } else {
                 SettingsViews(multiplyBy: $multiplyBy, numOfQuestion: $numOfQuestion, startGame: startGame)
             }
@@ -39,13 +40,23 @@ struct MultiplyAgain: View {
     
     func checkAnswer() {
         if currentIndex < numOfQuestion - 1 {
+            checkUserAnswer()
             currentIndex += 1
             userAnswer = ""
         } else {
             isGameActive = false
             currentIndex = 0
+            userScore = 0
         }
-        
+    }
+    
+    //func to check if it was correct
+    func checkUserAnswer() {
+        if Int(userAnswer) == questions[currentIndex].answer {
+            userScore += 1
+        } else {
+            
+        }
     }
     
     func generateQuestion() {
@@ -63,11 +74,17 @@ struct MultiplyAgain: View {
 struct GameView: View {
     var question: Question
     var onSubmit: () -> Void
+    var userScore: Int
+    var userRound: Int
+    var numOfROunds: Int
     @Binding var userAnswer: String
     
     var body: some View {
         NavigationStack {
             VStack {
+                Text("\(userScore) out of \(numOfROunds)")
+                Text("\(userRound) out of \(numOfROunds)")
+                
                 Text("\(question.answer)")
                     .font(.subheadline)
                     
